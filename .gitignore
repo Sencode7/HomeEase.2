@@ -1,0 +1,17 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build folders
+bin/
+obj/
+
+# User-specific files
+*.userprefs
+
+# ASP.NET
+appsettings.Development.json
+
+# Logs
+*.log
