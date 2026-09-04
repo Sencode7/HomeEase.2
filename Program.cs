@@ -30,7 +30,7 @@ namespace HomeEase
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Users}/{action=Index}/{id?}")
+                pattern: "{controller=Users}/{action=Login}/{id?}")
                 .WithStaticAssets();
 
             app.Run();

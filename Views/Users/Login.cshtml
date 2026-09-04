@@ -1,0 +1,511 @@
+﻿@model HomeEase.ViewModels.LoginViewModels
+
+@{
+    ViewData["Title"] = "Landlord Sign In";
+}
+
+<!-- ================= HEADER ================= -->
+
+<header class="site-header">
+
+    <div class="header-content">
+
+        <div class="brand">
+            <div class="brand-logo">
+                <img src="/img/heLogo.png" />
+            </div>
+        </div>
+
+        <div class="header-right">
+            <span>Need an account?</span>
+            <a href="#">Register</a>
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ================= LOGIN PAGE ================= -->
+
+<div class="signup-page">
+
+    <div class="signup-container">
+
+        <div class="signup-header">
+            <div class="signup-badge">LANDLORD PORTAL</div>
+            <h2>Sign in to your account</h2>
+            <p>
+                Enter your credentials to continue.
+            </p>
+        </div>
+
+        <form asp-action="Login" method="post" novalidate>
+
+            <!-- Validation Summary -->
+
+            <div asp-validation-summary="ModelOnly"
+                 class="validation-summary">
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="input-group-custom">
+
+                <label asp-for="Input.Email">
+                    Email address
+                </label>
+
+                <input asp-for="Input.Email"
+                       type="email"
+                       class="form-control"
+                       placeholder="name@example.com"
+                       autocomplete="email" />
+
+                <span asp-validation-for="Input.Email"
+                      class="text-danger">
+                </span>
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="input-group-custom">
+
+                <label asp-for="Input.Password">
+                    Password
+                </label>
+
+                <div class="password-wrapper">
+
+                    <input asp-for="Input.Password"
+                           id="passwordInput"
+                           type="password"
+                           class="form-control"
+                           placeholder="Enter your password"
+                           autocomplete="current-password" />
+
+                    <button type="button"
+                            class="toggle-password"
+                            data-target="passwordInput"
+                            aria-label="Show password">
+                        <svg class="icon-eye" viewBox="0 0 24 24" width="16" height="16">
+                            <path fill="currentColor" d="M12 5c-5.5 0-9.5 4.5-10.5 7 1 2.5 5 7 10.5 7s9.5-4.5 10.5-7c-1-2.5-5-7-10.5-7zm0 11.5A4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 0 1 0 9zm0-2A2.5 2.5 0 1 0 12 9.5a2.5 2.5 0 0 0 0 5z" />
+                        </svg>
+                        <svg class="icon-eye-off" viewBox="0 0 24 24" width="16" height="16" style="display:none;">
+                            <path fill="currentColor" d="M3.3 2.3 2 3.6l3.2 3.2C3.4 8.2 2 10 1.5 12c1 2.5 5 7 10.5 7 1.9 0 3.6-.5 5.1-1.4l3.1 3.1 1.3-1.3L3.3 2.3zM12 16.5a4.5 4.5 0 0 1-4.4-5.4l1.6 1.6a2.5 2.5 0 0 0 3.2 3.2l1.6 1.6a4.5 4.5 0 0 1-2 .9zm.2-9L8.9 4.2C9.9 4 10.9 3.5 12 3.5c5.5 0 9.5 4.5 10.5 7-.5 1.3-1.6 2.9-3.1 4.3l-1.7-1.7c.9-.9 1.6-1.9 2-2.6-1-1.9-4-5-7.7-5-.6 0-1.2.1-1.8.2z" />
+                        </svg>
+                    </button>
+
+                </div>
+
+                <span asp-validation-for="Input.Password"
+                      class="text-danger">
+                </span>
+
+            </div>
+
+
+            <!-- REMEMBER ME -->
+
+            <div class="remember-row">
+
+                <label class="remember-me">
+                    <input asp-for="Input.RememberMe" type="checkbox" />
+                    <span>Remember me</span>
+                </label>
+
+                <a href="#" class="forgot-link">Forgot password?</a>
+
+            </div>
+
+
+            <!-- BUTTON -->
+
+            <button type="submit" class="create-btn">
+                Sign In
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<style>
+
+    /* =========================================
+                   ATLAS BLUE PALETTE
+                   ========================================= */
+
+    :root {
+        --atlas-900: #0F2A52;
+        --atlas-700: #17407F;
+        --atlas-600: #1F5AA8;
+        --atlas-100: #E9F0FA;
+        --atlas-200: #D3E1F4;
+    }
+
+
+    /* =========================================
+                   GLOBAL
+                   ========================================= */
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: #EEF3FA;
+        overflow: hidden;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: #1c2530;
+        -webkit-font-smoothing: antialiased;
+    }
+
+
+    /* =========================================
+                   HEADER
+                   ========================================= */
+
+    .site-header {
+        height: 56px;
+        background: #ffffff;
+        border-bottom: 1px solid #dde6f2;
+        display: flex;
+        align-items: center;
+    }
+
+    img {
+        width: 90px;
+        margin-left: 10px;
+    }
+
+    .header-content {
+        width: 100%;
+        max-width: 1350px;
+        margin: 0 auto;
+        padding: 0 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #1c2530;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .brand-logo {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--atlas-700);
+        border-radius: 6px;
+        color: white;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #667085;
+        font-size: 13px;
+    }
+
+        .header-right a {
+            color: var(--atlas-700);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+            .header-right a:hover {
+                text-decoration: underline;
+            }
+
+
+    /* =========================================
+                   PAGE
+                   ========================================= */
+
+    .signup-page {
+        height: calc(100vh - 56px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 16px;
+        background: #EEF3FA;
+        box-sizing: border-box;
+    }
+
+
+    /* =========================================
+                   MAIN CARD (small, non-scrolling)
+                   ========================================= */
+
+    .signup-container {
+        width: 100%;
+        max-width: 400px;
+        max-height: 100%;
+        background: #ffffff;
+        border: 1px solid #dde6f2;
+        border-radius: 10px;
+        padding: 34px 28px;
+        box-shadow: 0 1px 2px rgba(15, 42, 82, 0.05), 0 8px 20px rgba(15, 42, 82, 0.08);
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+
+    /* =========================================
+                   FORM HEADER
+                   ========================================= */
+
+    .signup-header {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .signup-badge {
+        display: inline-block;
+        color: var(--atlas-700);
+        background: var(--atlas-100);
+        border: 1px solid var(--atlas-200);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        padding: 3px 9px;
+        border-radius: 4px;
+        margin-bottom: 10px;
+    }
+
+    .signup-header h2 {
+        color: #142031;
+        font-size: 19px;
+        font-weight: 600;
+        margin: 0 0 4px 0;
+        letter-spacing: -0.2px;
+    }
+
+    .signup-header p {
+        color: #667085;
+        font-size: 12px;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+
+    /* =========================================
+                   INPUTS
+                   ========================================= */
+
+    .input-group-custom {
+        margin-bottom: 14px;
+    }
+
+        .input-group-custom label {
+            display: block;
+            color: #344054;
+            font-size: 11.5px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+    .form-control {
+        width: 100%;
+        height: 38px;
+        box-sizing: border-box;
+        background: #ffffff;
+        border: 1px solid #cdd8e6;
+        border-radius: 6px;
+        color: #1c2530;
+        font-size: 12.5px;
+        padding: 0 11px;
+        transition: all 0.15s ease;
+    }
+
+        .form-control::placeholder {
+            color: #9aa9bd;
+        }
+
+        .form-control:hover {
+            border-color: #9aa9bd;
+        }
+
+        .form-control:focus {
+            border-color: var(--atlas-600);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(31, 90, 168, 0.12);
+        }
+
+
+    /* Password field with toggle icon */
+
+    .password-wrapper {
+        position: relative;
+    }
+
+        .password-wrapper .form-control {
+            padding-right: 38px;
+        }
+
+    .toggle-password {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        padding: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #9aa9bd;
+        cursor: pointer;
+    }
+
+        .toggle-password:hover {
+            color: var(--atlas-700);
+        }
+
+
+    /* =========================================
+                   REMEMBER ME / FORGOT
+                   ========================================= */
+
+    .remember-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 18px;
+    }
+
+    .remember-me {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        color: #344054;
+        font-size: 12px;
+        cursor: pointer;
+    }
+
+        .remember-me input[type="checkbox"] {
+            width: 14px;
+            height: 14px;
+            accent-color: var(--atlas-700);
+            cursor: pointer;
+        }
+
+    .forgot-link {
+        color: var(--atlas-700);
+        font-size: 12px;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+
+    /* =========================================
+                   BUTTON
+                   ========================================= */
+
+    .create-btn {
+        width: 100%;
+        height: 38px;
+        border: none;
+        border-radius: 6px;
+        background: var(--atlas-700);
+        color: #ffffff;
+        font-size: 12.5px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.15s ease;
+    }
+
+        .create-btn:hover {
+            background: var(--atlas-900);
+            box-shadow: 0 4px 12px rgba(15, 42, 82, 0.25);
+        }
+
+        .create-btn:active {
+            transform: translateY(1px);
+        }
+
+
+    /* =========================================
+                   VALIDATION
+                   ========================================= */
+
+    .text-danger {
+        display: block;
+        color: #d92d20;
+        font-size: 10.5px;
+        margin-top: 3px;
+    }
+
+    .validation-summary {
+        color: #d92d20;
+        background: #fef3f2;
+        border: 1px solid #fecdca;
+        border-radius: 6px;
+        padding: 8px 12px;
+        font-size: 11.5px;
+        margin-bottom: 14px;
+    }
+
+        .validation-summary:empty {
+            display: none;
+        }
+
+
+    /* =========================================
+                   RESPONSIVE
+                   ========================================= */
+
+    @@media (max-width: 480px) {
+
+        .header-content {
+            padding: 0 20px;
+        }
+
+        .signup-container {
+            padding: 24px 20px;
+        }
+    }
+</style>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        document.querySelectorAll('.toggle-password').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var input = document.getElementById(btn.dataset.target);
+                var isHidden = input.type === 'password';
+                input.type = isHidden ? 'text' : 'password';
+                btn.querySelector('.icon-eye').style.display = isHidden ? 'none' : 'block';
+                btn.querySelector('.icon-eye-off').style.display = isHidden ? 'block' : 'none';
+                btn.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+            });
+        });
+    </script>
+}

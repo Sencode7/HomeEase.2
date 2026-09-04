@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HomeEase.Models;
+using Microsoft.EntityFrameworkCore;
 namespace HomeEase.Data
 {
     public class UsersContext:DbContext
@@ -6,6 +7,6 @@ namespace HomeEase.Data
      
     public UsersContext(DbContextOptions<UsersContext> options) : base(options) { }
     
-    
+    public DbSet<Landlord> landlord {  get; set; }
     }
 }
