@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HomeEase.Migrations
 {
-    [DbContext(typeof(UsersContext))]
+    [DbContext(typeof(UserContext))]
     [Migration("20260831133813_InitialCreate")]
     partial class InitialCreate
     {

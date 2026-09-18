@@ -41,7 +41,7 @@
             </p>
         </div>
 
-        <form asp-action="Signup" method="post" novalidate>
+        <form  asp-controller="Users" asp-action="Signup" method="post" novalidate>
 
             <!-- Validation Summary -->
 
@@ -95,17 +95,17 @@
 
             <div class="input-group-custom">
 
-                <label asp-for="Input.ContactNo">
+                <label asp-for="Input.ContactNumber">
                     Contact No.
                 </label>
 
-                <input asp-for="Input.ContactNo"
+                <input asp-for="Input.ContactNumber"
                        type="tel"
                        class="form-control"
                        placeholder="09XX XXX XXXX"
                        autocomplete="tel" />
 
-                <span asp-validation-for="Input.ContactNo"
+                <span asp-validation-for="Input.ContactNumber"
                       class="text-danger">
                 </span>
 
@@ -241,6 +241,7 @@
         -webkit-font-smoothing: antialiased;
     }
 
+  
 
     /* =========================================
                        HEADER
@@ -333,7 +334,7 @@
     .signup-container {
         width: 100%;
         max-width: 400px;
-        max-height: 100%;
+        max-height: 102%;
         background: #ffffff;
         border: 1px solid #dde6f2;
         border-radius: 10px;
@@ -543,7 +544,6 @@
         }
     }
 </style>
-
 
 
     <script>

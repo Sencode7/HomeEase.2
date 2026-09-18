@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using HomeEase.Services;
 using HomeEase.Data;
 namespace HomeEase
 {
@@ -10,8 +11,8 @@ namespace HomeEase
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<UsersContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
-
+            builder.Services.AddDbContext<UserContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
+            builder.Services.AddScoped<LandlordService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -30,7 +31,7 @@ namespace HomeEase
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Users}/{action=Login}/{id?}")
+                pattern: "{controller=Users}/{action=Signup}/{id?}")
                 .WithStaticAssets();
 
             app.Run();
