@@ -1,6 +1,8 @@
-using Microsoft.EntityFrameworkCore;
-using HomeEase.Services;
 using HomeEase.Data;
+using HomeEase.Models;
+using HomeEase.Services;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 namespace HomeEase
 {
     public class Program
@@ -13,6 +15,7 @@ namespace HomeEase
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<UserContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
             builder.Services.AddScoped<LandlordService>();
+            builder.Services.AddScoped<IPasswordHasher<Landlord>, PasswordHasher<Landlord>>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
