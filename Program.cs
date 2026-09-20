@@ -13,8 +13,10 @@ namespace HomeEase
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<ProductContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
             builder.Services.AddDbContext<UserContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
             builder.Services.AddScoped<LandlordService>();
+            builder.Services.AddScoped<ProductService>();
             builder.Services.AddScoped<IPasswordHasher<Landlord>, PasswordHasher<Landlord>>();
             var app = builder.Build();
 
